@@ -1,0 +1,382 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARS VIBE</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080808;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            background: rgba(8,8,8,0.95);
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: #ff3b30;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        nav button:hover,
+        nav button.active {
+            color: white;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 25px 150px;
+        }
+
+        .hero {
+            padding: 50px 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            line-height: 0.95;
+            letter-spacing: -4px;
+        }
+
+        .hero h1 span {
+            color: #ff3b30;
+        }
+
+        .hero p {
+            margin-top: 25px;
+            color: #888;
+            font-size: 17px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin: 30px 0 20px;
+        }
+
+        .tracks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .track {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 18px;
+            padding: 15px;
+            transition: 0.25s;
+        }
+
+        .track:hover {
+            transform: translateY(-4px);
+            border-color: #444;
+        }
+
+        .cover {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #35100d, #111, #421313);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .track h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+
+        .track p {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .play-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            color: black;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15,15,15,0.97);
+            border-top: 1px solid #292929;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 20;
+        }
+
+        .player-info {
+            flex: 1;
+        }
+
+        .player-title {
+            font-weight: bold;
+        }
+
+        .player-artist {
+            color: #777;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .player button {
+            border: none;
+            background: white;
+            color: black;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .empty {
+            color: #666;
+            padding: 30px 0;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            nav button {
+                font-size: 12px;
+            }
+
+            main {
+                padding: 25px 18px 140px;
+            }
+
+            .hero {
+                padding: 35px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .player {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">MARS <span>VIBE</span></div>
+
+    <nav>
+        <button class="active" onclick="showPage('home')">Главная</button>
+        <button onclick="showPage('music')">Музыка</button>
+        <button onclick="showPage('favorites')">Избранное</button>
+    </nav>
+</header>
+
+<main>
+
+    <section id="home">
+
+        <div class="hero">
+            <h1>FEEL THE<br><span>VIBE.</span></h1>
+
+            <p>
+                Музыка для ночных дорог, спокойных вечеров
+                и моментов, когда хочется просто исчезнуть из шума.
+            </p>
+        </div>
+
+        <h2 class="section-title">Последние треки</h2>
+
+        <div class="tracks">
+
+            <div class="track">
+                <div class="cover">🌙</div>
+                <h3>AFTER MIDNIGHT</h3>
+                <p>MARS VIBE • Night Chill</p>
+                <button class="play-btn" onclick="playTrack('AFTER MIDNIGHT')">▶</button>
+            </div>
+
+            <div class="track">
+                <div class="cover">🌌</div>
+                <h3>NIGHT DRIVE</h3>
+                <p>MARS VIBE • Late Night</p>
+                <button class="play-btn" onclick="playTrack('NIGHT DRIVE')">▶</button>
+            </div>
+
+            <div class="track">
+                <div class="cover">🖤</div>
+                <h3>NO SIGNAL</h3>
+                <p>MARS VIBE • Chill</p>
+                <button class="play-btn" onclick="playTrack('NO SIGNAL')">▶</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="music" style="display:none">
+
+        <h1 class="section-title">Музыка</h1>
+
+        <div class="tracks">
+
+            <div class="track">
+                <div class="cover">🌙</div>
+                <h3>AFTER MIDNIGHT</h3>
+                <p>MARS VIBE</p>
+                <button class="play-btn" onclick="playTrack('AFTER MIDNIGHT')">▶</button>
+            </div>
+
+            <div class="track">
+                <div class="cover">🌌</div>
+                <h3>NIGHT DRIVE</h3>
+                <p>MARS VIBE</p>
+                <button class="play-btn" onclick="playTrack('NIGHT DRIVE')">▶</button>
+            </div>
+
+            <div class="track">
+                <div class="cover">🖤</div>
+                <h3>NO SIGNAL</h3>
+                <p>MARS VIBE</p>
+                <button class="play-btn" onclick="playTrack('NO SIGNAL')">▶</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="favorites" style="display:none">
+
+        <h1 class="section-title">Избранное</h1>
+
+        <p class="empty">
+            Здесь появятся твои любимые треки ❤️
+        </p>
+
+    </section>
+
+</main>
+
+<div class="player">
+
+    <button onclick="togglePlay()">▶</button>
+
+    <div class="player-info">
+        <div class="player-title" id="playerTitle">
+            MARS VIBE
+        </div>
+
+        <div class="player-artist">
+            Выбери трек
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    let isPlaying = false;
+
+    function playTrack(name) {
+
+        document.getElementById("playerTitle").innerText = name;
+
+        isPlaying = true;
+
+        document.querySelector(".player button").innerText = "Ⅱ";
+    }
+
+    function togglePlay() {
+
+        if (document.getElementById("playerTitle").innerText === "MARS VIBE") {
+            return;
+        }
+
+        isPlaying = !isPlaying;
+
+        document.querySelector(".player button").innerText =
+            isPlaying ? "Ⅱ" : "▶";
+    }
+
+    function showPage(page) {
+
+        document.getElementById("home").style.display = "none";
+        document.getElementById("music").style.display = "none";
+        document.getElementById("favorites").style.display = "none";
+
+        document.getElementById(page).style.display = "block";
+
+        document.querySelectorAll("nav button").forEach(button => {
+            button.classList.remove("active");
+        });
+
+        event.target.classList.add("active");
+    }
+
+</script>
+
+</body>
+</html>
+```
