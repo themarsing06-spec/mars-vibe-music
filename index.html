@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARS VIBE — AFTER MIDNIGHT</title>
 
 ```
+<title>MARS VIBE — AFTER MIDNIGHT</title>
+
 <style>
     * {
         box-sizing: border-box;
@@ -17,57 +18,104 @@
     body {
         min-height: 100vh;
         font-family: Arial, sans-serif;
-        background: #080808;
+        background:
+            radial-gradient(circle at 50% 20%, #252525 0%, #0b0b0b 45%, #000 100%);
         color: white;
+
         display: flex;
         justify-content: center;
         align-items: center;
+
+        padding: 20px;
     }
 
-    .player {
-        width: 90%;
-        max-width: 420px;
-        padding: 30px;
+    .container {
+        width: 100%;
+        max-width: 430px;
         text-align: center;
-        background: #111;
-        border-radius: 25px;
-        box-shadow: 0 20px 60px rgba(0,0,0,.6);
     }
 
     .logo {
-        font-size: 28px;
-        font-weight: bold;
-        letter-spacing: 5px;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 7px;
+        margin-bottom: 25px;
+    }
+
+    .subtitle {
+        color: #888;
+        font-size: 12px;
+        letter-spacing: 3px;
+        margin-top: -18px;
         margin-bottom: 25px;
     }
 
     .cover {
         width: 100%;
-        aspect-ratio: 1;
-        border-radius: 18px;
-        object-fit: cover;
+        aspect-ratio: 1 / 1;
+        border-radius: 22px;
+
+        background:
+            radial-gradient(circle at 70% 30%, #555 0%, transparent 25%),
+            radial-gradient(circle at 30% 70%, #333 0%, transparent 30%),
+            linear-gradient(135deg, #1d1d1d, #050505);
+
+        box-shadow:
+            0 25px 70px rgba(0, 0, 0, 0.8),
+            inset 0 0 50px rgba(255,255,255,0.03);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         margin-bottom: 25px;
-        background: linear-gradient(135deg, #222, #050505);
+        overflow: hidden;
     }
 
-    h1 {
-        font-size: 24px;
+    .moon {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+
+        background: #eee;
+
+        box-shadow:
+            0 0 40px rgba(255,255,255,0.25),
+            0 0 100px rgba(255,255,255,0.08);
+    }
+
+    .track-title {
+        font-size: 25px;
+        font-weight: 600;
         margin-bottom: 8px;
     }
 
-    .artist {
-        color: #999;
+    .track-subtitle {
+        color: #888;
+        font-size: 14px;
         margin-bottom: 25px;
     }
 
     audio {
         width: 100%;
+        height: 45px;
     }
 
-    .hint {
-        margin-top: 20px;
-        color: #666;
-        font-size: 12px;
+    .bottom {
+        margin-top: 25px;
+        color: #555;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    @media (max-width: 500px) {
+        .logo {
+            font-size: 25px;
+        }
+
+        .track-title {
+            font-size: 22px;
+        }
     }
 </style>
 ```
@@ -77,23 +125,34 @@
 <body>
 
 ```
-<div class="player">
+<div class="container">
 
     <div class="logo">MARS VIBE</div>
 
-    <div class="cover"></div>
+    <div class="subtitle">NIGHT MUSIC</div>
 
-    <h1>AFTER MIDNIGHT</h1>
+    <div class="cover">
+        <div class="moon"></div>
+    </div>
 
-    <div class="artist">Night Drive 🌙</div>
+    <div class="track-title">
+        AFTER MIDNIGHT
+    </div>
 
-    <audio controls>
-        <source src="AFTER%20MIDNIGHT%20_%20Night%20Drive%20%F0%9F%8C%99.mp3" type="audio/mpeg">
-        Твой браузер не поддерживает аудио.
+    <div class="track-subtitle">
+        Night Drive 🌙
+    </div>
+
+    <audio controls preload="metadata">
+        <source
+            src="AFTER%20MIDNIGHT%20_%20Night%20Drive%20%F0%9F%8C%99.mp3"
+            type="audio/mpeg"
+        >
+        Ваш браузер не поддерживает аудио.
     </audio>
 
-    <div class="hint">
-        MARS VIBE • Night Music
+    <div class="bottom">
+        MARS VIBE • 2026
     </div>
 
 </div>
